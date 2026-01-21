@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<robot name="origins">
+  <link name="base_link">
+    <visual>
+     <origin xyz="0 0 0" rpy="1.5708 0.0 0.0"/>
+      <geometry>
+            <mesh filename="file:///d:/Aditya/CODING/RL_Manipulator/stl/umirobot_l1.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <mass value="0.2"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+    </inertial>
+  </link>
+
+  <link name="l1_cover">
+    <visual>
+      <origin xyz="0 -0.002 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <mesh filename="file:///d:/Aditya/CODING/RL_Manipulator/stl/umirobot_l1_cover.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <mass value="0.2"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+    </inertial>
+  </link>
+
+  <link name="l2">
+    <visual>
+     <origin xyz="0 0 0.555" rpy="4.71239 0 0"/>
+      <geometry>
+            <mesh filename="file:///d:/Aditya/CODING/RL_Manipulator/stl/umirobot_l2.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="red">
+        <color rgba="0.8 0.2 0.2 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.2"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+    </inertial>
+  </link>
+
+  <link name="l2_cover">
+    <visual>
+     <origin xyz="0 0 0.555" rpy="4.71239 0 0"/>
+      <geometry>
+            <mesh filename="file:///d:/Aditya/CODING/RL_Manipulator/stl/umirobot_l2_cover.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="red">
+        <color rgba="0.8 0.2 0.2 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.2"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+    </inertial>
+  </link>
+
+  <link name="l3">
+    <visual>
+     <origin xyz="0 0 -0.45" rpy="0 0 0"/>
+      <geometry>
+            <mesh filename="file:///d:/Aditya/CODING/RL_Manipulator/stl/umirobot_l3.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="red">
+        <color rgba="0.8 0.2 0.2 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.2"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+    </inertial>
+  </link>
+
+  <link name="l4">
+    <visual>
+      <origin xyz="0.45 0 0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+         <mesh filename="file:///d:/Aditya/CODING/RL_Manipulator/stl/umirobot_l4.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="0.8 0.8 0.2 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.2"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+    </inertial>
+  </link>
+ 
+  <link name="l5">
+    <visual>
+      <origin xyz="0 -0.17 0.01" rpy="0.0 0.0 0.0"/>
+      <geometry>
+         <mesh filename="file:///d:/Aditya/CODING/RL_Manipulator/stl/umirobot_l5.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="0.8 0.8 0.2 1.0"/>
+      </material>
+    </visual>
+    <inertial>
+      <mass value="0.2"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+    </inertial>
+  </link>
+ 
+
+  
+
+  <joint name="l1_to_l1_cover" type="fixed">
+    <parent link="base_link"/>
+    <child link="l1_cover"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+
+   <joint name="joint_l1_l2" type="revolute">
+    <parent link="base_link"/>
+    <child link="l2"/>
+    <origin xyz="0 0 0.525" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit upper="3.14159" lower="-3.14159" effort="10.0" velocity="1.0"/>
+    </joint>
+
+    <joint name="joint_l2_l2_cover" type="fixed">
+    <parent link="l2"/>
+    <child link="l2_cover"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="joint_l2_l3" type="revolute">
+    <parent link="l2"/>
+    <child link="l3"/>
+    <origin xyz="-0.1 0.3 0.32" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit upper="4.71239" lower="2.3562" effort="10.0" velocity="1.0"/>
+    </joint>
+
+    <joint name="joint_l3_l4" type="revolute">
+      <origin xyz="0 -0.4 -0.8" rpy="3.14159 0 3.14159"/>
+      <parent link="l3"/>
+      <child link="l4"/>
+      <axis xyz="0.0 1.0 0.0"/>
+      <limit upper="0.7854" lower="-3.14" effort="10.0" velocity="1.0"/>
+    </joint>
+    
+    <joint name="joint_l4_l5" type="revolute">
+      <origin xyz="1.5 0.115 -0.01" rpy="3.14159 0 3.14159"/>
+      <parent link="l4"/>
+      <child link="l5"/>
+      <axis xyz="1 0 0"/>
+      <limit upper="10" lower="1" effort="10.0" velocity="1.0"/>
+    </joint>
+
+
+<!--
+    <collision>
+      <origin xyz="-0.1 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.120 0.025 0.040"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.25"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0005" ixy="0.0" ixz="0.0" iyy="0.0005" iyz="0.0" izz="0.0005"/>
+    </inertial>
+ -->  
+
+
+</robot>
