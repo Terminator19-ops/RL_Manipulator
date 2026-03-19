@@ -1,0 +1,68 @@
+<mujoco model="umi_arm">
+  
+  <compiler angle="radian" coordinate="local" inertiafromgeom="true"/>
+  <option gravity="0 0 -0.981" timestep="0.002"/>
+  
+  <asset>
+    <mesh name="l1_mesh" file="stl/umirobot_l1_meshlab_shifted.stl" scale="0.01 0.01 0.01"/>
+    <mesh name="l1_cover_mesh" file="stl/umirobot_l1_cover_shifted.stl" scale="0.01 0.01 0.01"/>
+    
+    <mesh name="l2_mesh" file="stl/umirobot_l2_meshlab_shifted.stl" scale="0.01 0.01 0.01"/>
+    <mesh name="l2_cover_mesh" file="stl/umirobot_l2_cover_shifted.stl" scale="0.01 0.01 0.01"/>
+
+    <mesh name="l3_mesh" file="stl/umirobot_l3_meshlab_shifted.stl" scale="0.01 0.01 0.01"/>
+    <mesh name="l4_mesh" file="stl/umirobot_l4_meshlab_shifted.stl" scale="0.01 0.01 0.01"/>
+    <mesh name="l5_mesh" file="stl/umirobot_l5_meshlab_shifted.stl" scale="0.01 0.01 0.01"/>
+  </asset>
+  
+  <worldbody>
+    
+    <light pos="0 0 2"/>
+    
+    <!-- L1 -->
+    <body name="l1" pos="0 0 0" euler="1.5707 0 0">
+      <geom type="mesh" mesh="l1_mesh"/>
+      <geom type="mesh" mesh="l1_mesh" density="1000"/>
+      
+      <!-- keep cover separate (your choice) -->
+      <body name="l1_cover" pos="0 0 0">
+        <geom type="mesh" mesh="l1_cover_mesh"/>
+        <geom type="mesh" mesh="l1_cover_mesh" density="1000"/>
+      </body>
+      
+      <!-- L2 -->
+      <!-- IMPORTANT: this pos = hinge center location -->
+      <body name="l2" pos="0.025 0.1 0" euler="0 0 0"><!-- rot y -->
+        <geom type="mesh" mesh="l2_mesh"/>
+        <geom type="mesh" mesh="l2_mesh" density="1000"/>
+        
+        <!-- cover moves with l2 -->
+        <body name="l2_cover" pos="-0.032 0.45 0">
+          <geom type="mesh" mesh="l2_cover_mesh"/>
+          <geom type="mesh" mesh="l2_cover_mesh" density="1000"/>
+        </body>
+        
+        <body name="l3" pos="0 0.25 -0.3" euler="1.5707 0 3.14"><!-- rot y -->
+          <geom type="mesh" mesh="l3_mesh"/>
+          <geom type="mesh" mesh="l3_mesh" density="1000"/>
+          
+          <body name="l4" pos="0 -0.23 -0.82" euler="0 0 -3.14"> <!-- rot y -->
+            <geom type="mesh" mesh="l4_mesh"/>
+            <geom type="mesh" mesh="l4_mesh" density="1000"/>
+            
+            <body name="l5" pos="1.25 0.125 0" euler="0 3.14 0"> <!-- rot x -->
+              <geom type="mesh" mesh="l5_mesh"/>
+              <geom type="mesh" mesh="l5_mesh" density="1000"/>
+            </body>
+
+          </body>
+
+        </body>
+      
+      </body>
+      
+    </body>
+    
+  </worldbody>
+  
+</mujoco>
